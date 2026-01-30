@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}" />
+<body>
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}" />
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>닉네임</th>
+                <th>직업</th>
+                <th>성별</th>
+                <th>나이</th>
+                <th>선택</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.nickName}"></td>
+                <td th:text="${user.job}"></td>
+                <td th:text="${user.gender}"></td>
+                <td th:text="${user.ageGroup}"></td>
+                <td>
+                    <form th:action="@{/agite/add}" method="post">
+                        <input type="hidden" name="userId" th:value="${user.id}">
+                        <input type="hidden" name="spotId" th:value="${spotId}">
+
+                        <button type="submit" class="btn btn-info">아지트 등록</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}" />
+</div> <!-- /container -->
+</body>
+</html>

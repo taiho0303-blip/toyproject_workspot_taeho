@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}" />
+<body>
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}" />
+
+    <div class="py-5 text-center">
+        <h2>리뷰 상세보기</h2>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="mb-0" th:text="${review.title}">리뷰 제목</h4>
+                <small class="text-muted" th:text="${#temporals.format(review.createdAt, 'yyyy-MM-dd HH:mm')}">2026-01-29</small>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <strong>👤 작성자:</strong> <span th:text="${review.user.nickName}">닉네임</span>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <strong>📍 장소:</strong> <span th:text="${review.spot.title}">장소 이름</span>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="review-content my-4" style="min-height: 200px; white-space: pre-wrap;">
+                <p th:text="${review.content}">리뷰 내용이 여기에 표시됩니다.</p>
+            </div>
+        </div>
+
+        <div class="card-footer text-right">
+            <a href="/review/reviews" class="btn btn-secondary">목록으로</a>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}" />
+</div> </body>
+</html>

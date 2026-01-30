@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}" />
+<body>
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}" />
+
+    <div class="py-4">
+        <h2 th:text="|'${user.nickName}'님의 아지트 리스트|">닉네임님의 아지트 리스트</h2>
+    </div>
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>장소</th>
+                <th>커스텀 이름</th>
+                <th>콘센트 유무</th>
+                <th>메모</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="agite : ${agites}">
+                <td th:text="${agite.id}"></td>
+                <td th:text="${agite.spot.title}"></td>
+                <td th:text="${agite.customName}"></td>
+                <td th:text="${agite.hasOutlet}"></td>
+                <td th:text="${agite.memo}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-3">
+        <a href="/" class="btn btn-secondary">홈으로</a>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}" />
+</div> <!-- /container -->
+</body>
+</html>

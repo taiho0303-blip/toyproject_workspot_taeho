@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}">
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}" />
+
+    <div th:if="${message}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <span th:text="${message}">메시지 내용</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="jumbotron">
+        <h1>WORK SPOT</h1>
+        <p class="lead">회원 기능</p>
+        <p>
+            <a class="btn btn-lg btn-secondary" href="/user/new">회원 가입</a>
+            <a class="btn btn-lg btn-secondary" href="/users">회원 목록</a>
+        </p>
+        <p class="lead">장소 검색</p>
+        <p>
+            <a class="btn btn-lg btn-dark" href="/spot/searchWord">장소 검색</a>
+        </p>
+        <p class="lead">아지트 조회</p>
+        <p>
+            <a class="btn btn-lg btn-dark" href="/agite/chooseUser">아지트 조회</a>
+        </p>
+        <p class="lead">리뷰 기능</p>
+        <p>
+            <a class="btn btn-lg btn-info" href="/review/chooseUser">리뷰 작성</a>
+            <a class="btn btn-lg btn-info" href="/review/reviews">리뷰 조회</a>
+        </p>
+
+    </div>
+    <div th:replace="~{fragments/footer :: footer}" />
+</div> <!-- /container -->
+</body>
+</html>

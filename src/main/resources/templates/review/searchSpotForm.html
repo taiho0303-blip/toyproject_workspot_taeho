@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}" />
+<style>
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
+<body>
+
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
+
+    <form role="form" th:action="@{/review/searchSpot/{userId}(userId=${userId})}" method="post">
+        <div class="form-group">
+            <label for="searchWord">검색어</label>
+            <input type="text" name="searchWord" id="searchWord"
+                   class="form-control" placeholder="검색어를 입력하세요">
+        </div>
+        <button type="submit" class="btn btn-primary">검색하기</button>
+    </form>
+    <br/>
+    <div th:replace="~{fragments/footer :: footer}" />
+</div> <!-- /container -->
+
+</body>
+</html>

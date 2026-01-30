@@ -1,0 +1,7 @@
+kakao:
+  api:
+    key: YOUR_KAKAO_API_KEY
+naver:
+  client:
+    id: YOUR_NAVER_ID
+    secret: YOUR_NAVER_SECRET

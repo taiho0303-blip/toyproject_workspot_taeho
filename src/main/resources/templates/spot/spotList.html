@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}" />
+<body>
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
+
+    <h2 th:text="|'${searchWord}' 검색 결과|"></h2>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>장소명</th>
+            <th>주소</th>
+            <th>카테고리</th>
+            <th>상세보기</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="spot : ${spots}">
+            <td th:text="${spot.place_name}">카페이름</td>
+            <td th:text="${spot.road_address_name}">주소</td>
+            <td th:text="${spot.category_name}">카테고리</td>
+            <td>
+                <form th:action="@{/spot/detail}" method="post">
+                    <input type="hidden" name="place_name" th:value="${spot.place_name}">
+                    <input type="hidden" name="road_address_name" th:value="${spot.road_address_name}">
+                    <input type="hidden" name="id" th:value="${spot.id}">
+                    <input type="hidden" name="x" th:value="${spot.x}">
+                    <input type="hidden" name="y" th:value="${spot.y}">
+                    <input type="hidden" name="category_name" th:value="${spot.category_name}">
+                    <input type="hidden" name="category_group_code" th:value="${spot.category_group_code}">
+                    <input type="hidden" name="category_group_name" th:value="${spot.category_group_name}">
+
+                    <button type="submit" class="btn btn-info">상세보기</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:replace="~{fragments/footer :: footer}" />
+</div>
+</body>
+</html>

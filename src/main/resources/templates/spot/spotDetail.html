@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}" />
+<body>
+
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
+
+    <div class="py-5 text-center">
+        <h2>장소 상세 정보</h2>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="my-0" th:text="${spot.title}">장소 명</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>주소</strong>
+                            <p class="mb-0 text-muted" th:text="${spot.address}">서울특별시 성동구 ...</p>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>카테고리</strong>
+                            <p class="mb-0 text-muted" th:text="${spot.category}">카페 > 디저트</p>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>고유 ID (Kakao)</strong>
+                            <p class="mb-0 text-muted" th:text="${spot.uniqueId}">12345678</p>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>좌표</strong>
+                            <p class="mb-0 text-muted">
+                                X: <span th:text="${spot.mapx}">127.123</span> /
+                                Y: <span th:text="${spot.mapy}">37.123</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer text-end">
+                    <form th:action="@{/agite/selectUser}" method="post">
+                        <input type="hidden" name="spotId" th:value="${spot.id}">
+                        <button type="submit" class="btn btn-success">내 아지트로 저장</button>
+                        <a href="javascript:history.back()" class="btn btn-secondary">뒤로 가기</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: footer}" />
+</div> </body>
+</html>

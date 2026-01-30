@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}" />
+<style>
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
+<body>
+
+<div class="container">
+    <div th:replace="~{fragments/bodyHeader :: bodyHeader}"/>
+
+    <form role="form" action="/agite/new" th:object="${agiteForm}" method="post"> <!--${memberForm} 여기에 addAttribute 에 의해 MemberForm 객체(object)가 들어옴-->
+        <div class="form-group">
+            <label th:for="customName">커스텀 이름</label>
+            <input type="text" th:field="*{customName}" class="form-control" placeholder="커스텀 이름을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="hasOutlet">콘센트 유무</label>
+            <select th:field="*{hasOutlet}" class="form-control">
+                <option value="">-- 콘센트유무를 선택하세요 --</option>
+                <option th:value="YES">있음</option>
+                <option th:value="NO">없음</option>
+                <option th:value="UNKNOWN">모름</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label th:for="memo">메모</label>
+            <input type="text" th:field="*{memo}" class="form-control" placeholder="메모를 입력하세요">
+        </div>
+        <input type="hidden" name="userId" th:value="${agiteForm.userId}">
+        <input type="hidden" name="spotId" th:value="${agiteForm.spotId}">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br/>
+    <div th:replace="~{fragments/footer :: footer}" />
+</div> <!-- /container -->
+
+</body>
+</html>
